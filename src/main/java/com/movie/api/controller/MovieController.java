@@ -1,8 +1,9 @@
 package com.movie.api.controller;
 
-import java.util.HashMap;
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,10 +14,10 @@ import com.movie.api.entity.MovieEntity;
 import com.movie.api.repository.MovieRepository;
 
 @Controller
-public class HelloController {
+public class MovieController {
 	
 	private MovieRepository repository;
-	public HelloController(MovieRepository repository) {
+	public MovieController(MovieRepository repository) {
 		this.repository = repository;
 	}
 	
@@ -34,22 +35,15 @@ public class HelloController {
 		return message.toString();
 	}
 	
-	@RequestMapping( value = "/results", method = RequestMethod.GET)
+	@RequestMapping( value = "/adwards", method = RequestMethod.GET)
 	@ResponseBody
-	public HashMap<String, HashMap<String, String>> results() {
-		StringBuffer message = new StringBuffer();
+	public ResponseEntity<Object> result() {
+		
 		MovieDao dao = new MovieDao(repository);
 		
-		List<MovieEntity> lista = (List<MovieEntity>) dao.getMaior()[2];
-		HashMap<String, String> map = new HashMap<String, String>();
-		map.put("producer", dao.getMaior()[1].toString());
-		map.put("interval", ""+(Integer.parseInt(lista.get(1).getYear()) - Integer.parseInt(lista.get(0).getYear())));
-		map.put("previous", lista.get(0).getYear());
-		map.put("following", lista.get(1).getYear());
+		return ResponseEntity.status(HttpStatus.OK).body(dao.getAwards());
 		
-		HashMap<String, HashMap<String, String>> map2 = new HashMap<String, HashMap<String, String>>();
-		map2.put("max", map);
-		return  map2;
+	
 	}
 
 	@RequestMapping( value = "/getAll", method = RequestMethod.GET)
