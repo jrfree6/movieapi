@@ -12,8 +12,8 @@
 5. `java -jar movieapi.jar`
 6. h2Console: http://localhost:8080/h2-console
 Metodos:
- http://localhost:8080/result - tras o produtor que mais venceu.
- http://localhost:8080/getAll - trans json com todos os registros importados do csv.
+ http://localhost:8080/adwards - tras o resultado.
+ http://localhost:8080/getAll - tras json com todos os registros importados do csv.
  
 ---
 
