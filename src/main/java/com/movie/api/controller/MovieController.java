@@ -29,8 +29,8 @@ public class MovieController {
 		
 		message.append("Seja Bem-Vindo! <br />");
 		message.append("Métodos: <br />");
-		message.append("/result - tras o que mais venceu. <br />");
-		message.append("/getAll - trans json com todos os registros importados do csv. <br />");
+		message.append("<a href='http://localhost:8080/adwards'>/adwards</a> - resultados. <br />");
+		message.append("<a href='http://localhost:8080/getAll'>/getAll</a> - tras json com todos os registros importados do csv. <br />");
 		
 		return message.toString();
 	}
