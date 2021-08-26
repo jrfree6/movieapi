@@ -56,7 +56,7 @@ public class MovieDao  {
 			if(movieTmp != null) {
 				if(movieTmp.getProducers().equalsIgnoreCase(movieTo.getProducers())) {
 					int interval = Helper.stringToInteger(movieTo.getYear() )- Helper.stringToInteger(movieTmp.getYear());
-					if(interval <= min) {
+					if(interval <= min && interval==1) {
 						listMin.add(new Min(movieTo.getProducers(), interval, Helper.stringToInteger(movieTmp.getYear()), Helper.stringToInteger(movieTo.getYear())));
 					}
 					if(interval >= max) {
